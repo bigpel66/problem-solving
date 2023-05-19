@@ -20,7 +20,7 @@ private:
 	void get_input(void) {
 		cin >> pos_me >> pos_bro;
 		q.push({ 0, pos_me });
-		is_visited = vector<bool>(200'001, false);
+		is_visited = vector<bool>(100'001, false);
 	}
 
 	void solve(void) {
@@ -31,7 +31,7 @@ private:
 		while (!q.empty()) {
 			point p = q.front();
 			q.pop();
-			if (p.second * 2 < 200'001 && !is_visited.at(p.second * 2)) {
+			if (p.second * 2 < 100'001 && !is_visited.at(p.second * 2)) {
 				if (p.second * 2 == pos_bro) {
 					cout << p.first;
 					return;
@@ -47,7 +47,7 @@ private:
 				q.push({ p.first + 1, p.second - 1 });
 				is_visited[p.second - 1] = true;
 			}
-			if (p.second + 1 < 200'001 && !is_visited.at(p.second + 1)) {
+			if (p.second + 1 < 100'001 && !is_visited.at(p.second + 1)) {
 				if (p.second + 1 == pos_bro) {
 					cout << p.first + 1;
 					return;
