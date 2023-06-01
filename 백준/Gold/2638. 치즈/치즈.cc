@@ -36,24 +36,22 @@ private:
 		is_visited = vector<vector<bool>>(row, vector<bool>(col));
 		queue<melt> q;
 		q.push({ 0, 0 });
+		is_visited[0][0] = true;
 		while (!q.empty()) {
 			int cx = q.front().first;
 			int cy = q.front().second;
 			q.pop();
-			if (is_visited.at(cx).at(cy)) {
-				continue;
-			}
-			is_visited[cx][cy] = true;
 			for (size_t i = 0; i < displacement.size(); i++) {
 				int nx = cx + displacement.at(i).at(0);
 				int ny = cy + displacement.at(i).at(1);
-				if (nx < 0 || ny < 0 || nx >= row || ny >= col) {
+				if (nx < 0 || ny < 0 || nx >= row || ny >= col || is_visited.at(nx).at(ny)) {
 					continue;
 				}
 				if (cheese.at(nx).at(ny)) {
 					ferment[nx][ny]++;
-				} else if (!is_visited.at(nx).at(ny)) {
+				} else {
 					q.push({ nx, ny });
+					is_visited[nx][ny] = true;
 				}
 			}
 		}
