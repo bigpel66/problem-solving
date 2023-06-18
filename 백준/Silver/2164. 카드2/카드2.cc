@@ -8,6 +8,7 @@ std::queue<int> cards;
 void inputAction()
 {
     std::cin >> numberOfCards;
+
     for (int i = 0; i < numberOfCards; i++)
     {
         cards.push(i + 1);
@@ -39,5 +40,6 @@ void solution()
 int main(void)
 {
     solution();
+
     return 0;
 }
