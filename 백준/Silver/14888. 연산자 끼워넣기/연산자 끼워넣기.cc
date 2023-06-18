@@ -1,91 +1,73 @@
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#define endl "\n"
-using lld = long long;
+#include <climits>
+#include <iostream>
 
-int number;
-lld sum;
-lld min = 987654321;
-lld max = -987654321;
-std::vector<int> problemOperand;
-std::vector<int> problemOperator;
+using namespace std;
 
-void bruteForce()
-{
-    std::sort(problemOperator.begin(), problemOperator.end());
-    
-    do{
-        sum = problemOperand.at(0);
-        
-        for(int i = 0; i < number - 1; i++)
-        {
-            switch(problemOperator.at(i))
-            {
-                case 0:
-                    sum += problemOperand.at(i + 1);
-                    break;
-                case 1:
-                    sum -= problemOperand.at(i + 1);
-                    break;
-                case 2:
-                    sum *= problemOperand.at(i + 1);
-                    break;
-                case 3:
-                    sum /= problemOperand.at(i + 1);
-                    break;
+class sol {
+private:
+    int max_value, min_value;
+    int number_of_operand;
+    vector<int> number;
+    vector<int> count;
+
+    void stream(void) {
+        cin.tie(nullptr);
+        ios_base::sync_with_stdio(false);
+    }
+
+    void get_input(void) {
+        cin >> number_of_operand;
+        number = vector<int>(number_of_operand);
+        count = vector<int>(4, 0);
+        for (int i = 0 ; i < number_of_operand ; i++) {
+            cin >> number[i];
+        }
+        for (int i = 0 ; i < 4 ; i++) {
+            cin >> count[i];
+        }
+        max_value = INT_MIN;
+        min_value = INT_MAX;
+    }
+
+    void dfs(int acc, int index) {
+        if (index == number_of_operand - 1) {
+            max_value = max(max_value, acc);
+            min_value = min(min_value, acc);
+            return;
+        }
+        for (size_t i = 0 ; i < count.size() ; i++) {
+            if (!count.at(i)) {
+                continue;
             }
-        }
-        
-        if(max < sum)
-        {
-            max = sum;
-        }
-        if(min > sum)
-        {
-            min = sum;
-        }
-    } while(std::next_permutation(problemOperator.begin(), problemOperator.end()));
-}
-
-void makeInput()
-{
-    std::cin >> number;
-    
-    for(int i = 0; i < number; i++)
-    {
-        int temp;
-        std::cin >> temp;
-        problemOperand.push_back(temp);
-    }
-    
-    for(int i = 0; i < 4; i++)
-    {
-        int temp;
-        std::cin >> temp;
-        
-        for(int j = 0; j < temp; j++)
-        {
-            problemOperator.push_back(i);
+            count[i]--;
+            if (i == 0) {
+                dfs(acc + number[index + 1], index + 1);
+            } else if (i == 1) {
+                dfs(acc - number[index + 1], index + 1);
+            } else if (i == 2) {
+                dfs(acc * number[index + 1], index + 1);
+            } else {
+                dfs(acc / number[index + 1], index + 1);
+            }
+            count[i]++;
         }
     }
-}
 
-void makeOutput()
-{
-    std::cout << max << endl;
-    std::cout << min;
-}
+    void solve(void) {
+        dfs(number.at(0), 0);
+        cout << max_value << '\n' << min_value;
+    }
 
-int main()
-{
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(NULL);
-    std::cout.tie(NULL);
-    
-    makeInput();
-    bruteForce();
-    makeOutput();
-    
+public:
+    sol(void) {
+        stream();
+        get_input();
+        solve();
+    }
+};
+
+int main(void) {
+    sol ve;
     return 0;
 }
