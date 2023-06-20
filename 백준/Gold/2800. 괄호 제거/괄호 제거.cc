@@ -35,27 +35,6 @@ private:
         }
     }
 
-//    void find_skip_index(int& skip_begin, int& skip_end) {
-//        for (size_t i = 0 ; i < is_visited.size() ; i++) {
-//            if (is_visited.at(i)) {
-//                skip_begin = p.at(i).first;
-//                skip_end = p.at(i).second;
-//                return;
-//            }
-//        }
-//    }
-//
-//    string erase_parenthesis(const int& skip_begin, const int& skip_end) {
-//        string temp;
-//        for (size_t i = 0 ; i < original.length() ; i++) {
-//            if (i == skip_begin || i == skip_end) {
-//                continue;
-//            }
-//            temp.push_back(original.at(i));
-//        }
-//        return temp;
-//    }
-
     void mask_bitset(int bitset) {
         int i = 0;
         while (bitset) {
