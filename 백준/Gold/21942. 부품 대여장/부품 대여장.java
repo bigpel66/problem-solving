@@ -9,8 +9,7 @@ public class Main {
     StringBuffer sb = new StringBuffer();
     int numberOfInformation, duration, penalty;
     Map<String, String> map = new HashMap<>();
-    Map<String, Long> fin = new HashMap<>();
-    List<String> answer;
+    Map<String, Long> fin = new TreeMap<>();
 
     public Main() throws Exception {
         getInput();
@@ -59,12 +58,10 @@ public class Main {
             sb.append("-1");
             return;
         }
-        answer = new ArrayList<>(fin.keySet());
-        answer.sort(Comparator.naturalOrder());
-        for (String s : answer) {
-            sb.append(s);
+        for (Map.Entry<String, Long> entry : fin.entrySet()) {
+            sb.append(entry.getKey());
             sb.append(' ');
-            sb.append(fin.get(s));
+            sb.append(entry.getValue().toString());
             sb.append('\n');
         }
     }
