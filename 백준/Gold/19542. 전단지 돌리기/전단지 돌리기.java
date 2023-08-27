@@ -65,17 +65,4 @@ public class Main {
         new Main();
     }
 
-    public class Node {
-        public int from;
-        public int to;
-        public int cost;
-
-        public Node(int from, int to, int cost) {
-            this.from = from;
-            this.to = to;
-            this.cost = cost;
-        }
-    }
-
-
 }
