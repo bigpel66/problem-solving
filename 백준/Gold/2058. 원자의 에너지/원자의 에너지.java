@@ -8,10 +8,10 @@ public class Main {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     StringBuffer sb = new StringBuffer();
-    int numberOfStatus, numberOfDiff;
-    int[] status;
-    int[] diff;
     int[][] dp;
+    int numberOfStatus, numberOfDiff;
+    Integer[] status;
+    Integer[] diff;
     List<Integer>[] node;
 
     public Main() throws Exception {
@@ -26,8 +26,8 @@ public class Main {
         numberOfStatus = Integer.parseInt(st.nextToken());
         numberOfDiff = Integer.parseInt(st.nextToken());
         node = new ArrayList[numberOfStatus];
-        status = new int[numberOfStatus];
-        diff = new int[numberOfDiff];
+        status = new Integer[numberOfStatus];
+        diff = new Integer[numberOfDiff];
         dp = new int[numberOfStatus][2];
         for (int i = 0; i < numberOfStatus; i++) {
             node[i] = new ArrayList<>();
@@ -40,16 +40,16 @@ public class Main {
         Arrays.sort(status);
     }
 
-    int lowerBound(int[] arr, int begin, int end, int value) {
+    <T extends Comparable<? super T>> int lowerBound(T[] arr, int begin, int end, T value) {
         while (begin < end) {
             int mid = (begin + end) / 2;
-            if (arr[mid] < value) {
+            if (arr[mid].compareTo(value) < 0) {
                 begin = mid + 1;
             } else {
                 end = mid;
             }
         }
-        if (begin < arr.length && arr[begin] < value) {
+        if (begin < arr.length && arr[begin].compareTo(value) < 0) {
             begin++;
         }
         return begin;
