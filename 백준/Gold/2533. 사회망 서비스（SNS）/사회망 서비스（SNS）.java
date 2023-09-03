@@ -8,7 +8,7 @@ public class Main {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     StringBuffer sb = new StringBuffer();
-    int numberOfNode, answer;
+    int numberOfNode;
     int [][] dp;
     List<Integer>[] node;
 
@@ -21,7 +21,6 @@ public class Main {
 
     void getInput() throws Exception {
         numberOfNode = Integer.parseInt(br.readLine());
-        answer = Integer.MAX_VALUE;
         dp = new int[numberOfNode + 1][2];
         node = new ArrayList[numberOfNode + 1];
         for (int i = 0; i <= numberOfNode; i++) {

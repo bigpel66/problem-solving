@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 439400 KB, 시간: 2320 ms
+메모리: 441540 KB, 시간: 2220 ms
 
 ### 분류
 
@@ -16,7 +16,7 @@
 
 <p>예를 들어, 철수와 영희, 철수와 만수, 영희와 순희가 서로 친구 관계라면 이를 표현하는 친구 관계 그래프는 다음과 같다. </p>
 
-<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/c0d162b4-20d6-46eb-be8f-d06ae8bf1e9c/-/preview/" style="width: 203px; height: 81px;"></p>
+<p style="text-align: center;"><img alt="" src="" style="width: 203px; height: 81px;"></p>
 
 <p>친구 관계 그래프를 이용하면 사회망 서비스에서 어떤 새로운 아이디어가 전파되는 과정을 이해하는데 도움을 줄 수 있다. 어떤 새로운 아이디어를 먼저 받아들인 사람을 얼리 아답터(early adaptor)라고 하는데, 사회망 서비스에 속한 사람들은 얼리 아답터이거나 얼리 아답터가 아니다. 얼리 아답터가 아닌 사람들은 자신의 모든 친구들이 얼리 아답터일 때만 이 아이디어를 받아들인다. </p>
 
