@@ -17,7 +17,7 @@ public class Main {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))) {
             getInput(br);
             sb = new StringBuffer();
-            solve(br);
+            solve();
             bw.write(sb.toString());
             bw.flush();
         }
@@ -64,7 +64,7 @@ public class Main {
         }
     }
 
-    private void solve(BufferedReader br) throws Exception {
+    private void solve() {
         getDCount();
         getGCount();
         if (dCount > gCount * 3) {
