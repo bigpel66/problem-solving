@@ -73,14 +73,4 @@ public class Main {
         new Main();
     }
 
-    private static class Node {
-        public int index;
-        public int cost;
-
-        public Node(int index, int cost) {
-            this.index = index;
-            this.cost = cost;
-        }
-    }
-
 }
