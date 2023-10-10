@@ -47,23 +47,4 @@ public class Main {
     public static void main(String[] args) throws Exception {
         new Main();
     }
-
-    public static class Room implements Comparable<Room> {
-        public int begin;
-        public int end;
-
-        public Room(int begin, int end) {
-            this.begin = begin;
-            this.end = end;
-        }
-
-        @Override
-        public int compareTo(Room room) {
-            if (begin == room.begin) {
-                return Integer.compare(end, room.end);
-            }
-            return Integer.compare(begin, room.begin);
-        }
-    }
-
 }
