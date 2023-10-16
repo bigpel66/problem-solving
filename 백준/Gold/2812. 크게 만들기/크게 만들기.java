@@ -45,19 +45,4 @@ public final class Main {
     public static void main(String[] args) throws Exception {
         new Main();
     }
-
-    public static final class Town implements Comparable<Town> {
-        public int position;
-        public int residence;
-
-        public Town(int position, int residence) {
-            this.position = position;
-            this.residence = residence;
-        }
-
-        @Override
-        public int compareTo(Town town) {
-            return Integer.compare(position, town.position);
-        }
-    }
 }
