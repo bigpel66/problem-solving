@@ -2,15 +2,15 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public final class Main {
     private final StringBuilder sb;
     private int numberOfDigit, numberOfRemove;
     private String number;
-    private Deque<Character> stack = new LinkedList<>();
+    private Deque<Character> deque = new ArrayDeque<>();
 
     public Main() throws Exception {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -33,14 +33,14 @@ public final class Main {
     private void solve() {
         int limit = numberOfDigit - numberOfRemove;
         for (int i = 0; i < number.length(); i++) {
-            while (!stack.isEmpty() && numberOfRemove > 0 && stack.peekLast() < number.charAt(i)) {
-                stack.pollLast();
+            while (!deque.isEmpty() && numberOfRemove > 0 && deque.peekLast() < number.charAt(i)) {
+                deque.pollLast();
                 numberOfRemove--;
             }
-            stack.offerLast(number.charAt(i));
+            deque.offerLast(number.charAt(i));
         }
         for (int i = 0; i < limit; i++) {
-            sb.append(stack.pollFirst());
+            sb.append(deque.pollFirst());
         }
     }
 
