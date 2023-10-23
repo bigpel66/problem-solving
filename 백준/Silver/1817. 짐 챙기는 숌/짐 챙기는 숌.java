@@ -35,23 +35,16 @@ public final class Main {
     }
 
     private void solve() {
-        int prev;
         int acc = 0;
         for (int weight : weights) {
-            prev = acc;
-            acc += weight;
-            if (acc > maxWeight) {
+            if (acc + weight <= maxWeight) {
+                acc += weight;
+            } else {
+                acc = weight;
                 answer++;
-                acc -= prev;
-            } else if (acc == maxWeight) {
-                answer++;
-                acc -= maxWeight;
             }
         }
-        if (acc > 0) {
-            answer++;
-        }
-        sb.append(answer);
+        sb.append(numberOfBook == 0 ? answer : answer + 1);
     }
 
     public static void main(String[] args) throws Exception {
