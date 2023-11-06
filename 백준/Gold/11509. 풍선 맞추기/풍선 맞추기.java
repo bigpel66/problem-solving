@@ -26,26 +26,18 @@ public final class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < numberOfBalloon; i++) {
             heights.add(Integer.parseInt(st.nextToken()));
+            ahead.putIfAbsent(heights.get(i), 0);
         }
     }
 
     private void solve() {
         for (int height : heights) {
-            boolean isContinuous = ahead.containsKey(height + 1);
-            if (!isContinuous) {
-                ahead.put(height, ahead.getOrDefault(height, 0) + 1);
-                continue;
-            }
-            int count = ahead.get(height + 1) - 1;
-            if (count == 0) {
-                ahead.remove(height + 1);
+            if (ahead.get(height) > 0) {
+                ahead.put(height, ahead.get(height) - 1);
             } else {
-                ahead.put(height + 1, count);
+                answer++;
             }
-            ahead.put(height, ahead.getOrDefault(height, 0) + 1);
-        }
-        for (Map.Entry<Integer, Integer> entry : ahead.entrySet()) {
-            answer += entry.getValue();
+            ahead.put(height - 1, ahead.getOrDefault(height - 1, 0) + 1);
         }
         sb.append(answer);
     }
