@@ -40,7 +40,7 @@ func (p *Problem) Solve() {
 }
 
 func (p *Problem) input() {
-	if _, err := fmt.Fscanf(p.Reader, "%d\n", &p.trial); err != nil {
+	if _, err := fmt.Fscan(p.Reader, &p.trial); err != nil {
 		os.Exit(1)
 	}
 	for i := 0; i < p.trial; i++ {
