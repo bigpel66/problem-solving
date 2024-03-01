@@ -54,16 +54,14 @@ func (p *Problem) input() {
 
 func (p *Problem) logic() {
 	for _, str := range p.strs {
-		bytes := make([]byte, 0, len(str))
 		ch := str[0]
 		for i := 1; i < len(str); i++ {
 			if ch != str[i] {
-				bytes = append(bytes, ch)
+				p.Append(string(ch))
 				ch = str[i]
 			}
 		}
-		bytes = append(bytes, ch)
-		p.Append(string(bytes)).Append("\n")
+		p.Append(string(ch)).Append("\n")
 	}
 }
 
