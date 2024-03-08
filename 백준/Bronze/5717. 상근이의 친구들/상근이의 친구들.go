@@ -16,10 +16,6 @@ type Problem struct {
 }
 
 type Data struct {
-	friends []struct {
-		m int
-		w int
-	}
 }
 
 func NewProblem() *Problem {
@@ -32,12 +28,7 @@ func NewProblem() *Problem {
 }
 
 func NewData() *Data {
-	return &Data{
-		friends: make([]struct {
-			m int
-			w int
-		}, 0),
-	}
+	return &Data{}
 }
 
 func (p *Problem) Solve() {
@@ -47,6 +38,9 @@ func (p *Problem) Solve() {
 }
 
 func (p *Problem) input() {
+}
+
+func (p *Problem) logic() {
 	for {
 		var v1, v2 int
 		if _, err := fmt.Fscan(p.Reader, &v1, &v2); err != nil {
@@ -55,17 +49,8 @@ func (p *Problem) input() {
 		if v1 == 0 && v2 == 0 {
 			break
 		} else {
-			p.friends = append(p.friends, struct {
-				m int
-				w int
-			}{m: v1, w: v2})
+			p.Append(v1 + v2).Append("\n")
 		}
-	}
-}
-
-func (p *Problem) logic() {
-	for _, i := range p.friends {
-		p.Append(i.m + i.w).Append("\n")
 	}
 }
 
