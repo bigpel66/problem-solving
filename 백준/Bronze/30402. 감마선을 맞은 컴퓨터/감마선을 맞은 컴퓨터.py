@@ -1,11 +1,11 @@
-for i in range(15):
-    s = input()
-    if 'w' in s:
-        print('chunbae')
+for _ in range(15):
+    pic = list(input().split())
+    if "w" in pic:
+        print("chunbae")
         break
-    elif 'b' in s:
-        print('nabi')
+    elif "b" in pic:
+        print("nabi")
         break
-    elif 'g' in s:
-        print('yeongcheol')
+    elif "g" in pic:
+        print("yeongcheol")
         break
